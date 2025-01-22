@@ -2,9 +2,15 @@ package kr.co.hanbit.product_management;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 @SpringBootApplication
 public class ProductManagementApplication {
@@ -26,6 +32,20 @@ public class ProductManagementApplication {
                 .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
                 .setFieldMatchingEnabled(true);
         return modelMapper;
+    }
+
+    // 데이터베이스 연결
+    @Bean
+    @Profile("prod")
+    public ApplicationRunner runner(DataSource dataSource){
+        return args -> {
+            try (Connection connection = dataSource.getConnection()) {
+                // 연결 성공 시 수행할 작업을 여기에 작성
+            } catch (SQLException e) {
+                // 예외 처리: 데이터베이스 연결 실패 시
+                e.printStackTrace();
+            }
+        };
     }
 
 }

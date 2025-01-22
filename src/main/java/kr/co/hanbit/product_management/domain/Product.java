@@ -24,6 +24,18 @@ public class Product {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     public Boolean sameId(Long id){
         return this.id.equals(id);
     }
@@ -40,4 +52,19 @@ public class Product {
         return Objects.equals(id, product.id);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
 }
