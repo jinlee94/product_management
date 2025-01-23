@@ -1,7 +1,5 @@
 package kr.co.hanbit.product_management;
 
-import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,14 +23,14 @@ public class ProductManagementApplication {
     setter 없이도 엔티티와 DTO를 변환 가능하도록 하려면 다음과 같은 설정으로 빈을 생성해야 한다.
     이 설정은 ModelMapper가 private인 필드에 리플렉션 API(자바에서 제공함)로 접근하여 변환할 수 있도록 만들어준다.
      */
-    @Bean
-    public ModelMapper modelMapper() {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration()
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
-                .setFieldMatchingEnabled(true);
-        return modelMapper;
-    }
+//    @Bean
+//    public ModelMapper modelMapper() {
+//        ModelMapper modelMapper = new ModelMapper();
+//        modelMapper.getConfiguration()
+//                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
+//                .setFieldMatchingEnabled(true);
+//        return modelMapper;
+//    }
 
     // 데이터베이스 연결
     @Bean
